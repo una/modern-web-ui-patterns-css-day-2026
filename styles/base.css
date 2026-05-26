@@ -5,9 +5,11 @@
   --text-muted: #a0a0a0;
 
   /* Theme Colors */
-  --theme-1: #00ffa6; /* Green - Content */
-  --theme-2: #6dd3ff; /* Blue - Transitions */
-  --theme-3: #ff00dd; /* Pink - Personalize */
+  --theme-0: #ffae00;
+  --theme-1: #00ffa6;
+  --theme-2: #6dd3ff; 
+  --theme-3: #ff62ea; 
+  --theme-4: #ff7b7b;
 
   /* Mappings for existing vars */
   --lime: #00ffa6;
@@ -108,7 +110,7 @@ h1,
 blockquote {
   font-family: 'Space Grotesk', sans-serif;
   max-width: 20ch;
-  font-size: 8rem;
+  font-size: 7rem;
   line-height: 1.1;
   color: var(--theme-1);
   font-weight: 700;
@@ -193,6 +195,7 @@ ul {
 ol {
   text-align: left;
   font-size: 4rem;
+  margin: 2rem auto;
 }
 
 input[type=checkbox] {
@@ -238,6 +241,8 @@ baseline-status {
 }
 
 /* Theme Utilities for Slides */
+.theme-0-text { color: var(--theme-0); }
+.theme-4-text { color: var(--theme-4); }
 .theme-1-text { color: var(--theme-1); }
 .theme-2-text { color: var(--theme-2); }
 .theme-3-text { color: var(--theme-3); }
@@ -281,6 +286,12 @@ baseline-status {
     to {
         opacity: 0;
     }
+}
+
+.group-theme-0 .theme-badge {
+    background: rgba(0, 230, 118, 0.1);
+    color: var(--theme-0);
+    border: 1px solid var(--theme-0);
 }
 
 .group-theme-1 .theme-badge {
