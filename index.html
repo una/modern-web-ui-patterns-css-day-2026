@@ -7,6 +7,7 @@
     <title>Modern UI Patterns | @una</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios,arrow_forward_ios" /> 
+<script src="https://cdn.jsdelivr.net/npm/baseline-status@1/baseline-status.min.js" type="module"></script>
 </head>
 <body>
     <div class="title">Modern UI Patterns</div>
@@ -107,7 +108,8 @@
               </div>
 
               <div class="slide center">
-                Blah
+                <img src="img/newsletter-signup.webp" alt="">
+                <p>Image from Paul Boag</p>
               </div>
 
               <div stop class="section-group group-theme-1">
@@ -126,25 +128,159 @@
               </div>
 
               <div class="slide center">
-                <video src="img/azhassan.mp4" width="1200" type="video/mp4" controls autoplay loop></video>
+                <video src="img/azhassan.mp4" width="1200" type="video/mp4" controls autoplay loop muted></video>
                 <p>@azhassan_</p>
               </div>
 
               <!-- Demo 1 -->
-              <div class="slide center bg-theme-1">
+              <div class="slide center bg-theme-1" id="hidey-bar-slide">
                 <a id="one"></a>
-                <p>Hidey-bar pattern</p>
-                <iframe style="    width: 800px;
-    aspect-ratio: 3 / 2;" class="mini-phone resize" src="https://codepen.io/una/debug/xbVoLLO" frameborder="0"></iframe>
+                <p id="hidey-bar-trigger" style="cursor: pointer; width: 840px;">Hidey-bar pattern: relative to sticky header</p>
+                <div id="hidey-bar-container">
+                  <iframe id="hidey-bar-iframe" class="mini-phone resize" src="https://codepen.io/una/debug/xbVoLLO" frameborder="0"></iframe>
+                  <div id="hidey-bar-content"></div>
+                </div>
+                
+                <style>
+                  #hidey-bar-container {
+                    display: flex;
+                    gap: 2rem;
+                    align-items: flex-start;
+                    justify-content: center;
+                    width: 100%;
+                    max-width: 1400px;
+                    min-height: 620px;
+                    margin: 0 auto;
+                    transition: justify-content 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                  
+                  #hidey-bar-container.layout-single {
+                    justify-content: center;
+                  }
+                  
+                  #hidey-bar-iframe {
+                    width: 800px;
+                    aspect-ratio: 3/2;
+                    flex-shrink: 0;
+                    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                                height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                                margin 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                    will-change: width, height;
+                    margin: 0 auto;
+                  }
+                  
+                  #hidey-bar-iframe.compact {
+                    width: 400px;
+                    aspect-ratio: 2 / 3;
+                  }
+                  
+                  #hidey-bar-content {
+                    width: 0;
+                    min-height: 620px;
+                    flex-shrink: 0;
+                    opacity: 0;
+                    transform: translateX(-20px);
+                    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                                width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                    pointer-events: none;
+                    will-change: opacity, transform;
+                    display: grid;
+                    place-content: center;
+                  }
+                  
+                  #hidey-bar-content.visible {
+                    width: 600px;
+                    opacity: 1;
+                    transform: translateX(0);
+                    pointer-events: auto;
+                  }
+                  
+                  #hidey-bar-content.resetting {
+                    width: 600px;
+                    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+                  }
+                </style>
+                
+                <script>
+                  (function() {
+                    const trigger = document.getElementById('hidey-bar-trigger');
+                    const container = document.getElementById('hidey-bar-container');
+                    const iframe = document.getElementById('hidey-bar-iframe');
+                    const contentDiv = document.getElementById('hidey-bar-content');
+                    let clickCount = 0;
+                    
+                    const content1 = `<p style="margin-top: -2rem;">Scroll State Queries</p>
+                <baseline-status style="zoom: 1.5" featureId="container-scroll-state-queries"></baseline-status>`;
+                    
+                    const content2 = `<code class="css" style="font-size: 1.3rem; margin-left: 5rem;"><pre>html {
+  container-type: scroll-state;
+}
+
+header {  
+  /*  Check if there has been a scroll  */
+  @container (not scroll-state(scrolled: none)) {
+    /* convert to sticky pos & add transition */
+    position: sticky;
+    top: 0;
+    transition: translate 0.3s;
+  }
+  
+  /* Hide when you scroll down */
+  @container scroll-state(scrolled: bottom) {
+    translate: 0 -100%;
+  }
+  
+  /* appear when you scroll back up */
+  @container scroll-state(scrolled: top) {
+    translate: 0 0;
+  }
+}</pre></code>`;
+                    
+                    trigger.addEventListener('click', function() {
+                      clickCount++;
+                      
+                      if (clickCount === 1) {
+                        // First click: resize iframe and show first content
+                        container.classList.add('two-by');
+                        iframe.classList.add('compact');
+                        contentDiv.innerHTML = content1;
+                        // Delay to allow content to be inserted before fade in
+                        requestAnimationFrame(() => {
+                          requestAnimationFrame(() => {
+                            contentDiv.classList.add('visible');
+                          });
+                        });
+                      } else if (clickCount === 2) {
+                        // Second click: fade out opacity only, swap content, fade in
+                        // Keep width at 600px to prevent layout shift
+                        contentDiv.style.opacity = '0';
+                        setTimeout(() => {
+                          contentDiv.innerHTML = content2;
+                          requestAnimationFrame(() => {
+                            contentDiv.style.opacity = '1';
+                          });
+                        }, 300);
+                      } else {
+                        // Third click: reset everything, keeping width stable
+                        contentDiv.classList.add('resetting');
+                        contentDiv.classList.remove('visible');
+                        iframe.classList.remove('compact');
+                        container.classList.remove('two-by');
+                        setTimeout(() => {
+                          contentDiv.classList.remove('resetting');
+                          contentDiv.innerHTML = '';
+                          clickCount = 0;
+                        }, 600);
+                      }
+                    });
+                  })();
+                </script>
               </div>
 
-              <div class="slide center">
-                <h2>Scroll State Queries</h2>
-                <script src="https://cdn.jsdelivr.net/npm/baseline-status@1/baseline-status.min.js" type="module"></script>
-                <baseline-status style="zoom: 1.5" featureId="container-scroll-state-queries"></baseline-status>
-              </div>
-
-              <div class="slide center" id="scroll-state-queries-slide">
+              <!-- All of the types of scroll state queries -->
+              <!-- <div class="slide center" id="scroll-state-queries-slide">
                 <h3 id="scroll-state-queries-title" style="cursor: pointer; margin-top: 0;">Scroll state queries</h3>
                 <div class="two-by" style="grid-template-columns: repeat(4, 1fr);">
                   <div class="sq-reveal-item"><code style="margin-bottom: 1rem">scrollable</code>
@@ -314,51 +450,42 @@
                     });
                   })();
                 </script>
-              </div>
-
-
-              <!-- <div class="slide center bg-theme-1">
-                <h2>Recipe:</h2>
-                <ol>
-                  <li><code>container-type: scroll-state</code></li>
-                  <li><code>scrolled: bottom</code> query</li>
-                  <li>Fixed positioning</li>
-                </ol>
               </div> -->
+              <!-- End types of scroll state queries -->
 
               <div class="slide center">
-                <div class="two-by"><div style="display: grid; gap: 2rem;">
-  <code class="css" style="font-size: 1.3rem"><pre>html {
-  container-type: scroll-state;
-}
+                <div class="two-by">
+                 <div style="display: grid; gap: 2rem;">
+                  <code class="html" style="font-size: 1.3rem"><pre>&lt;a href="#" class="nav-item"&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+    &lt;span&gt;Profile&lt;/span&gt;
+    &lt;div class="dot" aria-hidden="true"&gt;&lt;/div&gt;
+&lt;/a&gt;</pre></code>
+  <code class="css" style="font-size: 1.3rem"><pre>.nav-item {
 
-header {  
-  /*  Check if there has been a scroll  */
-  @container (not scroll-state(scrolled: none)) {
-    /* convert to sticky pos & add transition */
-    position: sticky;
-    top: 0;
-    transition: translate 0.3s;
-  }
-  
-  /* Hide when you scroll down */
+  /* styles */
+
   @container scroll-state(scrolled: bottom) {
-    translate: 0 -100%;
-  }
-  
-  /* appear when you scroll back up */
-  @container scroll-state(scrolled: top) {
-    translate: 0 0;
-  }
+      width: var(--smaller-dot-width);
+
+      <!-- transition visibility -->
+      svg { scale: 0; opacity: 0; ... }
+      .dot { scale: 1; opacity: 1; }
+    }
 }</pre></code>
                 </div>
-              <iframe class="mini-phone resize" src="https://codepen.io/una/debug/xbVoLLO" frameborder="0"></iframe>
+              <iframe class="mini-phone resize" src="https://codepen.io/una/debug/gbLGBmB" frameborder="0"></iframe>
               </div>
             </div>
 
             <div class="slide center">
               <h2>Scroll-driven animation</h2>
               <baseline-status style="zoom: 1.5" featureId="scroll-driven-animations"></baseline-status>
+            </div>
+
+            <div class="slide center">
+              <video src="img/o_powica.mp4" type="video/mp4" controls autoplay loop muted></video>
+              <p>@O_Pawica</p>
             </div>
 
             <div class="slide center">
