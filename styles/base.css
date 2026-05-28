@@ -221,7 +221,6 @@ strong {
 }
 
 p, h3 {
-  max-width: 90%;
   justify-self: center;
 }
 
@@ -310,4 +309,10 @@ baseline-status {
     background: rgba(245, 0, 87, 0.1);
     color: var(--theme-3);
     border: 1px solid var(--theme-3);
+}
+
+.group-theme-4 .theme-badge {
+    background: rgba(245, 74, 0, 0.1);
+    color: var(--theme-4);
+    border: 1px solid var(--theme-4);
 }

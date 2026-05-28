@@ -57,8 +57,8 @@
                 <ol id="ux-principles-list">
                   <li class="theme-0-text reveal-item"><strong>Respect user preferences</strong></li>
                   <li class="theme-1-text reveal-item"><strong>Maximize content, reduce noise</strong></li>
-                  <li class="theme-2-text reveal-item"><strong>Implement natural interactions</strong></li>
-                  <li class="theme-3-text reveal-item"><strong>Provide guided navigation</strong></li>
+                  <li class="theme-3-text reveal-item"><strong>Implement natural interactions</strong></li>
+                  <li class="theme-2-text reveal-item"><strong>Provide guided navigation</strong></li>
                   <li class="theme-4-text reveal-item"><strong>Adapt to the form factor</strong></li>
                 </ol>
                 <style>
@@ -102,10 +102,136 @@
               <div class="slide center bg-theme-0 stop">
                   <h2 class="theme-0-text">1. Respect user preferences</h2>
                   <div>
-                    <p style="max-width: 100%;">Let your user co-design the experience.</p>
-                    <p style="max-width: 100%;"></p>
+                    <p>Respect user preferences (theming, motion, etc.)</p>
+                    <p>Think about the user's context</p>
+                    <p>Users co-design the experience with you</p>
                   </div>
               </div>
+
+              <div class="slide center">
+                <h4 style="font-size: 5rem;"><code>prefers-color-scheme</code></h4>
+                <h3 style="font-size: 5rem; margin-top: 0;"><code>light-dark()</code></h3>
+              </div>
+
+              <div class="slide center">
+                <style contenteditable style="display: block;
+    white-space: pre;
+    text-align: left;
+    font-size: 2.5rem;
+    padding: 2rem;
+    border: 1px solid lightgray;
+    background: #3c3a45;
+    border-radius: 4rem;
+    corner-shape: squircle; width: 900px;">body {
+  color-scheme: dark;
+  background: light-dark(lightpink, black);
+}
+
+.title {
+  color: light-dark(purple, white);
+  font-weight: light-dark(700, 400);
+}</style>
+              </div>
+
+              <div class="slide center">
+                <style contenteditable style="display: block;
+    white-space: pre;
+    text-align: left;
+    font-size: 2.5rem;
+    padding: 2rem;
+    border: 1px solid lightgray;
+    background: #3c3a45;
+    border-radius: 4rem;
+    corner-shape: squircle; width: 900px;">/* not a thing */
+
+.title {
+  font-weight: light-dark(700, 400);
+}</style>
+              </div>
+
+              <div class="slide center">
+                <img src="img/bramus.jpg" alt="" style="height: 700px">
+                <small>Luckily I work with some smart people who found a way around this <br>(this is @bramus/@bram.us)</small>
+              </div>
+
+                <div class="slide center">
+                <h2>CSS custom functions (<code>@function</code>)</h2>
+                <baseline-status style="zoom: 1.5" featureId="function"></baseline-status>
+                </div>
+
+              <div class="slide center">
+                <div class="two-stack">
+                <code class="css" style="width: 1100px;"><pre>@function --light-dark(--light, --dark) {
+  result: if(
+    style(--scheme: dark): var(--dark); else: var(--light)
+  );
+}
+
+:root {
+   --scheme: light;
+
+  @media (prefers-color-scheme: dark) {
+   --scheme: dark;
+  }
+}</pre></code>
+  <code class="css" style="width: 1100px;"><pre>
+.title {
+  font-weight: --light-dark(700, 400); /* usage */
+}</pre></code>
+  </div>
+              </div>
+
+              <div class="slide center">
+                <h2>@function</h2>
+                <div class="two-by">
+<style contenteditable style="display: block;
+    white-space: pre;
+    text-align: left;
+    padding: 2rem;
+    border: 1px solid lightgray;
+    background: #3c3a45;
+    border-radius: 4rem;
+    corner-shape: squircle;">/* body { color-scheme: dark; } */
+</style>
+              <iframe class="mini-phone" style="height: 500px; background: white;"  src="https://codepen.io/una/debug/VYKPRrL" frameborder="0"></iframe>
+              </div>
+            </div>
+
+            <div class="slide center">
+              <h2>contrast-color()</h2>
+              <p style="max-width: 100%;">Landed in all stable browsers as of yesterday</p>
+              <baseline-status style="zoom: 1.5" featureId="contrast-color"></baseline-status>
+            </div>
+
+            <div class="slide center">
+              <div class="two-by">
+                <code class="css" style="font-size: 1.5rem"><pre>.button {
+  background: var(--button-bg);
+  color: contrast-color(var(--button-bg));
+}</pre></code>
+              <iframe class="mini-phone" style="height: 500px; background: white;"  src="https://codepen.io/una/debug/azmEogb/e9c827b275197ed3252eea64a6fd09e7" frameborder="0"></iframe>
+            </div>
+            </div>  
+
+            <div class="slide center">
+              <div class="two-by">
+                <code class="css" style="font-size: 1.5rem"><pre>
+.card-title {
+  color: if(
+    style(--contrast-color: white): antiquewhite;
+    else: midnightblue
+  );
+}
+
+.card-label {
+  color: if(
+    style(--contrast-color: white): lemonchiffon;
+    else: indigo
+  );
+}</pre></code>
+              <iframe class="mini-phone" style="height: 600px; background: white;"  src="https://codepen.io/una/debug/ZYpvzgP/cad0ccf229df45a4fef379c5b941ec49" frameborder="0"></iframe>
+            </div>
+            </div>  
 
               <div class="slide center">
                 <img src="img/newsletter-signup.webp" alt="">
@@ -873,7 +999,9 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
               <div class="section-group group-theme-2 ">
               <div class="sticky-anchor"><div class="theme-badge">Guide Users</div></div>
               <div class="slide center bg-theme-2 stop">
-                  <h2 class="theme-2-text">2. Guide users with natural transitions and interactions</h2>
+                  <h2 class="theme-3-text" style="font-size: 5rem; margin-bottom: 0;">3. Implement natural interactions</h2>
+                  <h2 class="theme-2-text" style="font-size: 5rem;">4. Provide guided navigation</h2>
+                  
                   <div>
                     <p>Morphing animations between states</p>
                     <p>View-transitions between pages</p>
@@ -882,9 +1010,19 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
               </div>
 
               <div class="slide center">
+                <video src="img/tubikstudio.mp4" controls loop autoplay muted></video>
+                <p style="margin: 0">Tubik Studio</p>
+              </div>
+
+              <div class="slide center">
+                <video src="img/AntonSKV.mp4" controls loop autoplay muted></video>
+                <p>dribbble.com/AntonSKV</p>
+              </div>
+
+              <div class="slide center">
                 <h2>Some animation tips</h2>
                 <ul style="font-size: 2.5rem">
-                  <li>You always want <i>some</i> visual feedback</li>
+                  <li>You always want <i>some</i> visual feedback, but don't overdo it</li>
                   <li>Animate from the source (ie. invoker)</li>
                   <li>Use natural easings <small>(you can approx. physics with <code>linear()</code>)</small></li>
                   <li>Interaction triggers user attention</li>
@@ -893,13 +1031,20 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
               </div>
 
               <div class="slide center">
-                <video src="img/studiyo.mp4" type="video/mp4" controls autoplay loop></video>
+                <video height=600 src="img/studiyo.mp4" controls loop autoplay muted></video>
                 <p>@Studiyoco</p>
               </div>
 
               <div class="slide center">
-                <h3>sibling-index()</h3>
+                <video height=600 src="img/ShapesLab.mp4" controls loop autoplay muted></video>
+                <p>Shapes Lab (@shapesLabHQ)</p>
+              </div>
+
+
+              <div class="slide center">
+                
               <div class="two-by">
+                <div><p>sibling-index()</p>
 <code style="font-size: 1.5rem"><pre>dialog[open] > * {
   animation: entry-animation 0.6s 
              var(--subtle-spring) forwards;
@@ -907,7 +1052,7 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
   /* 0.2s delay, then stagger w/sibling-index() */
   animation-delay: 
             calc(sibling-index() * 0.05s + 0.2s);
-}</pre></code>
+}</pre></code></div>
             <iframe class="mini-phone" style="height: 550px" src="https://codepen.io/una/debug/pvEPBOq" frameborder="0" ></iframe>
           </div>
         </div>
@@ -936,6 +1081,30 @@ li {
 }
 </pre></code>
             <iframe class="mini-phone" style="height: 500px" src="https://codepen.io/una/debug/zYQPQYj" frameborder="0" ></iframe>
+          </div>
+        </div>
+
+        <div class="slide center">
+          <h3 style="font-size: 3rem">Direction-aware scroll-triggered animations</h3>
+              <div class="two-by">
+<code style="font-size: 1.35rem"><pre>html {
+  container-type: scroll-state;
+}
+
+.card {
+  animation: slide-up 0.6s ease-out forwards;
+
+  timeline-trigger: --reveal view() entry 0% exit 100%;
+  trigger-scope: --reveal;
+  animation-trigger: --reveal play-forwards play-backwards;
+}
+
+@container scroll-state(scrolled: top) {
+  .card {
+    animation-name: slide-down;
+  }
+}</pre></code>
+            <iframe class="mini-phone" style="height: 500px" src="https://codepen.io/una/debug/KwzEzLG" frameborder="0" ></iframe>
           </div>
         </div>
 
@@ -1053,6 +1222,12 @@ a:target-current {
             </div>
 
             <div class="slide center">
+              <div class="two-by" style="grid-template-columns: 1fr 1fr;">
+            <p>Scoped view transitions are now in Chrome 147+</p>
+            <iframe class="mini-phone" src="https://codepen.io/una/debug/xbEdrVz/5e029a4aaaaa075056ce41e9020c0b7b/" frameborder="0"></iframe></div>
+          </div>
+
+            <div class="slide center">
               <video style="height: 700px" autoplay muted loop controls>
                 <source src="img/morph.mp4" type="video/mp4">
               </video>
@@ -1117,7 +1292,7 @@ a:target-current {
           <div class="slide center">
                 <div class="two-by">
                   <div class="code-side">
-                    <code class="css" style="font-size: 1rem"><pre>:root { --d: 1; } /* 1 = up, -1 = down, toggled in JS */
+                    <code class="css" style="font-size: 1.3rem"><pre>:root { --d: 1; } /* 1 = up, -1 = down, toggled in JS */
 
 ::view-transition-old(f) {
   animation: .15s both slide-out;
@@ -1129,13 +1304,15 @@ a:target-current {
 
 @keyframes slide-out {
   to {
-    opacity: 0; transform: translateY(calc(var(--d) * -10px));
+    opacity: 0;
+    transform: translateY(calc(var(--d) * -10px));
   }
 }
 
 @keyframes slide-in {
   from {
-    opacity: 0; transform: translateY(calc(var(--d) * 10px));
+    opacity: 0;
+    transform: translateY(calc(var(--d) * 10px));
   }
 }
                     </pre></code>
@@ -1174,160 +1351,17 @@ a:target-current {
             <iframe style="width:1300px; height: 700px" src="https://spring-generator.vercel.app/" frameborder="0"></iframe>
           </div>
 
-            <div class="slide center">
-              <div class="two-by" style="grid-template-columns: 1fr 1fr;">
-            <p>We have scoped view transitions now in Chrome 147+</p>
-            <iframe class="mini-phone" src="https://codepen.io/una/debug/xbEdrVz/5e029a4aaaaa075056ce41e9020c0b7b/" frameborder="0"></iframe></div>
-          </div>
-
               </div>
               <!-- Section 3 -->
-              <div class="section-group group-theme-3">
-              <div class="sticky-anchor"><div class="theme-badge">Personalize</div></div>
-              <div class="slide center stop bg-theme-3">
-                  <h2 class="theme-3-text">3. Personalize the experience</h2>
-                  <p>Respect user preferences (theming, motion, etc.)</p>
-                  <p>Think about the user's context</p>
-                  <p>Users co-design the experience with you</p>
+              <div class="section-group group-theme-4">
+              <div class="sticky-anchor"><div class="theme-badge">Adaptive design</div></div>
+              <div class="slide center stop">
+                Intro
               </div>
-
-              <div class="slide center">
-                <h4 style="font-size: 5rem;"><code>prefers-color-scheme</code></h4>
-                <h3 style="font-size: 5rem; margin-top: 0;"><code>light-dark()</code></h3>
               </div>
-
-              <div class="slide center">
-                <style contenteditable style="display: block;
-    white-space: pre;
-    text-align: left;
-    font-size: 2.5rem;
-    padding: 2rem;
-    border: 1px solid lightgray;
-    background: #3c3a45;
-    border-radius: 4rem;
-    corner-shape: squircle; width: 900px;">body {
-  color-scheme: dark;
-  background: light-dark(lightpink, black);
-}
-
-.title {
-  color: light-dark(purple, white);
-  font-weight: light-dark(700, 400);
-}</style>
-              </div>
-
-              <div class="slide center">
-                <style contenteditable style="display: block;
-    white-space: pre;
-    text-align: left;
-    font-size: 2.5rem;
-    padding: 2rem;
-    border: 1px solid lightgray;
-    background: #3c3a45;
-    border-radius: 4rem;
-    corner-shape: squircle; width: 900px;">/* not a thing */
-
-.title {
-  font-weight: light-dark(700, 400);
-}</style>
-              </div>
-
-              <div class="slide center">
-                <img src="img/bramus.jpg" alt="" style="height: 700px">
-                <small>Luckily I work with some smart people who found a way around this <br>(this is @bramus/@bram.us)</small>
-              </div>
-
-                <div class="slide center">
-                <h2>CSS custom functions (<code>@function</code>)</h2>
-                <baseline-status style="zoom: 1.5" featureId="function"></baseline-status>
-                </div>
-
-              <div class="slide center">
-                <div class="two-stack">
-                <code class="css" style="width: 1100px;"><pre>@function --light-dark(--light, --dark) {
-  result: if(
-    style(--scheme: dark): var(--dark); else: var(--light)
-  );
-}
-
-:root {
-   --scheme: light;
-
-  @media (prefers-color-scheme: dark) {
-   --scheme: dark;
-  }
-}</pre></code>
-  <code class="css" style="width: 1100px;"><pre>
-.title {
-  font-weight: --light-dark(700, 400); /* usage */
-}</pre></code>
-  </div>
-              </div>
-
-              <div class="slide center">
-                <h2>@function</h2>
-                <div class="two-by">
-<style contenteditable style="display: block;
-    white-space: pre;
-    text-align: left;
-    padding: 2rem;
-    border: 1px solid lightgray;
-    background: #3c3a45;
-    border-radius: 4rem;
-    corner-shape: squircle;">/* body { color-scheme: dark; } */
-</style>
-              <iframe class="mini-phone" style="height: 500px; background: white;"  src="https://codepen.io/una/debug/VYKPRrL" frameborder="0"></iframe>
-              </div>
-            </div>
-
-            <div class="slide center">
-              <h2>contrast-color()</h2>
-              <p style="max-width: 100%;">Landed in all stable browsers as of yesterday</p>
-              <baseline-status style="zoom: 1.5" featureId="contrast-color"></baseline-status>
-            </div>
-
-            <div class="slide center">
-              <div class="two-by">
-                <code class="css" style="font-size: 1.5rem"><pre>.button {
-  background: var(--button-bg);
-  color: contrast-color(var(--button-bg));
-}</pre></code>
-              <iframe class="mini-phone" style="height: 500px; background: white;"  src="https://codepen.io/una/debug/azmEogb/e9c827b275197ed3252eea64a6fd09e7" frameborder="0"></iframe>
-            </div>
-            </div>  
-
-            <div class="slide center">
-              <div class="two-by">
-                <code class="css" style="font-size: 1.5rem"><pre>
-.card-title {
-  color: if(
-    style(--contrast-color: white): antiquewhite;
-    else: midnightblue
-  );
-}
-
-.card-label {
-  color: if(
-    style(--contrast-color: white): lemonchiffon;
-    else: indigo
-  );
-}</pre></code>
-              <iframe class="mini-phone" style="height: 600px; background: white;"  src="https://codepen.io/una/debug/ZYpvzgP/cad0ccf229df45a4fef379c5b941ec49" frameborder="0"></iframe>
-            </div>
-            </div>  
-
-            <div class="slide center">
-              <h1>We have the tools to make the web fun and finessed</h1>
-            </div>
-
-            <div class="slide center">
-              <video style="height: 700px" autoplay muted loop controls>
-                <source src="img/tubikstudio.mp4" type="video/mp4">
-                <p>@tubikstudio</p>
-            </div>
 
               
-              <div class="slide center stop">
+              <div class="slide center">
                 <h3 style="font-size: 6rem; max-width: 100%;">Key UX Principles</h3>
                 <p>TODO: FIX</p>
                 <ol id="ux-principles-list">
@@ -1336,10 +1370,6 @@ a:target-current {
                   <li class="theme-3-text"><strong>Personalize</strong></li>
                 </ol>
               </div>
-
-              <!-- <div class="slide center">
-                <h3>These are 3 of the 5 principles we're exploring in a set of UX Best Practices</h3>
-              </div> -->
 
               <div class="slide center">
                 <h1>Do I need to know <strong>all</strong> the things?</h1>
