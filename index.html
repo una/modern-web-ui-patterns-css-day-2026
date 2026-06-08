@@ -1053,7 +1053,7 @@ header {
               </div>
             </div>
 
-
+<!-- 
 <div class="slide center">
                 <div class="two-by"><div style="display: grid; gap: 2rem;">
   <code class="html"><pre style="font-size: 1.5rem;"> &lt;!-- Invoker --&gt;
@@ -1069,12 +1069,12 @@ header {
 </code></div>
               <iframe class="mini-phone" src="https://codepen.io/una/debug/bNEwzrp" frameborder="0"></iframe>
               </div>
-            </div>            
+            </div>             -->
 
             <div class="slide center">
                 
                 <div class="two-by"><div style="display: grid; gap: 2rem;">
-  <code class="html"><pre style="font-size: 1.5rem;"> &lt;!-- Invoker --&gt;
+  <code class="html"><pre style="font-size: 1.5rem;"> &lt;!-- Interest invoker --&gt;
 &lt;button interestfor="my-tooltip"&gt;
   &lt;p aria-hidden="true"&gt;?&lt;/p&gt;
   &lt;p class="sr-only"&gt;Open Tooltip&lt;/p&gt;
@@ -1098,25 +1098,24 @@ header {
             <div class="slide center">
               <div class="two-by">
 
-<code class="html"><pre>&lt;p&gt;Hi! My name is &lt;a href="https://una.im"
-  interestfor="--una"&gt;Una Kravets&lt;/a&gt;.
-I'm a CSS and UI enthusiast...&lt;/p&gt;
+<code class="html" style="font-size: 1.5rem;"><pre>&lt;p&gt;Yesterday I wrote about 
+  &lt;a href="/contrast-color" 
+      interestfor="--color-contrast"&gt;
+    &lt;code&gt;contrast-color()&lt;/code&gt;
+  &lt;/a&gt;, a new feature landing in Chrome 147... 
+&lt;/p&gt;
 
-&lt;div id="--una" popover="hint"&gt;
-  &lt;header&gt;
-    &lt;picture&gt;
-      &lt;img src="una.jpg" alt="Una"&gt;
-    &lt;/picture&gt;
-    &lt;div&gt;
-      &lt;h2&gt;una&lt;/h2&gt;
-      &lt;a href="https://una.im"&gt;una.im&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;button&gt;Follow&lt;/button&gt;
-  &lt;/header&gt;
+&lt;div class="link-preview" popover="hint" 
+  id="--color-contrast"&gt;
+  &lt;img src="..." alt=""&gt;
+  &lt;div class="meta"&gt;
+    &lt;h2&gt;Automated accessible text with...&lt;/h2&gt;
+    &lt;p class="date"&gt;Mar 12, 2026&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </pre>
 </code>
-              <iframe class="mini-phone" src="https://codepen.io/una/debug/JooENdE" frameborder="0" ></iframe>
+              <iframe class="mini-phone" src="https://codepen.io/una/debug/MYbRLaO" frameborder="0" ></iframe>
               </div>
             </div></h2>
 
@@ -1585,7 +1584,7 @@ a:target-current {
   view-transition-name: --icon;
 }
 
-}::view-transition-old(--icon) {
+::view-transition-old(--icon) {
   animation-name: fade-out;
 }
 
@@ -1778,10 +1777,6 @@ menu.setAttribute('inert', '');</pre></code>
             </div>
 
             <div class="slide center">
-              <h1>We have the tools.</h1>
-            </div>
-
-            <div class="slide center">
               <h1>The web just keeps getting better.</h1>
             </div>
 
@@ -1790,8 +1785,19 @@ menu.setAttribute('inert', '');</pre></code>
             </div>
 
             <div id="slide-end" class="slide at-top">
-              <a class="link-only" href="#end" accesskey="0"></a>
-              <h2 style="margin: 4rem auto 10rem;">Stay in the know 👀</h2>
+              <!-- <a class="link-only" href="#end" accesskey="0"></a> -->
+              
+              <img src="img/modern-web-patterns-qr-code.png" style="filter: invert();
+    position: absolute;
+    top: -17rem;
+    left: 0;
+    width: 16rem;
+    mix-blend-mode: color-dodge;" alt="" >
+
+              <h2 style="margin: 4rem auto">Stay in the know 👀</h2>
+              
+              <p style="font-size: 3rem;">Demos: <a style="color: var(--theme-4); font-weight: 800" href="https://codepen.io/collection/myqqRY" target="_blank">codepen.io/collection/myqqRY</a></a></p>
+
               <div class="two-by" style="text-align: left; width: 90%; margin: 0 auto; align-items: start; gap: 3rem">
                 <div class="side">
                     <p style="border-bottom: 5px solid var(--lavender); text-align: left; width: 100%; margin-left: -4rem; ">Personal</p>
