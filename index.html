@@ -16,7 +16,7 @@
               <div id="intro-1" class="slide center">
                   <a class="link-only" href="#intro" accesskey='1'></a>
                   <h1 style="margin-bottom: 0" class="capitalize">Modern UI Patterns:</h1>
-                  <h2 style="color: var(--theme-1); margin-bottom: 6rem">Building A great UX<br/> with the latest CSS</h2>
+                  <h2 style="color: var(--theme-1); margin-bottom: 6rem">Building a great UX<br/> with next-gen CSS</h2>
                   <p class="intro" style="color: white">Una Kravets <span style="color:var(--theme-3)">&hearts;</span> una.im <br> Google Chrome DevRel</p>
               </div>
 
@@ -41,16 +41,31 @@
                 }</style>
               </div>
 
+              <!-- So in the past few months I've been on a journey to adapt to this new landscape and think about what really matters to people. And what matters is still the same: creating a great user experience. But what does that really mean? After years focusing on mostly code, it has been a while since I've been in the design space. I felt crusty. So I've been diving into modern UI patterns and exploring how to really align all of these awesome new features we have in CSS to them.-->
+
               <div class="slide center">
-                <p>So in the past few months I've been on a journey to adapt to this new landscape and think about what really matters to people. And what matters is still the same: creating a great user experience. But what does that really mean? After years focusing on mostly code, it has been a while since I've been in the design space. I felt crusty. So I've been diving into modern UI patterns and exploring how to really align all of these awesome new features we have in CSS to them.</p>
+                <video src="img/alxui_ux_transitions.mp4" type="mp4" controls autoplay loop muted></video>
+                <p style="margin-top:0">@alxui_ux</p>
               </div>
 
               <div class="slide center">
-                <video src="img/alxui_ux_transitions.mp4" type="mp4" controls autoplay loop></video>
-                <p>@alxui_ux</p>
-                -- images of good examples of modern UI patterns --
-                So I turned to the internet, I changed my algorithm to mostly follow designers, I started collecting examples of great UI patterns, and I've been working with our UX Research team to validate them. This is what we've come up with as a way to think about the next generation of web technologies.
+                <ul style="font-size: 2rem">
+                  <li>@alxui_ux</li>
+                  <li>@azhassan_</li>
+                  <li>@opawica</li>
+                  <li>Emil Kowalski</li>
+                  <li>@yui540</li>
+                  <li>Tubik Studio</li>
+                  <li>AntonSKV</li>
+                  <li>@Studiyoco</li>
+                  <li>@AdityaSur11</li>
+                  <li>Aurelien_Gz</li>
+                  <li>userinterface.wiki</li>
+                  <li>Nitish Khagwal</li>
+                </ul>
               </div>
+
+              <!-- So I turned to the internet, I changed my algorithm to mostly follow designers, I started collecting examples of great UI patterns, and I've been working with our UX Research team to validate them. This is what we've come up with as a way to think about the next generation of web technologies. -->
 
               <div class="slide center" id="ux-principles-slide">
                 <h2 style="font-size: 6rem; cursor: pointer;" id="ux-principles-title">Key UX Principles</h2>
@@ -109,8 +124,22 @@
               </div>
 
               <div class="slide center">
-                <h4 style="font-size: 5rem;"><code>prefers-color-scheme</code></h4>
-                <h3 style="font-size: 5rem; margin-top: 0;"><code>light-dark()</code></h3>
+                <ol style="font-size: 3rem">
+                  <li><code style="font-size: 3rem;
+    color: var(--theme-1); margin-left: -0.6rem;">prefers-color-scheme</code>:<br> light or dark theme</li>
+                  <li><code style="font-size: 3rem;
+    color: var(--theme-2); margin-left: -0.6rem;">prefers-contrast</code>:<br> higher contrast between adjacent colors</li>
+                  <li><code style="font-size: 3rem;
+    color: var(--theme-3); margin-left: -0.6rem;">prefers-reduced-motion</code>:<br> minimized animation or motion</li>
+                  <li><code style="font-size: 3rem;
+    color: var(--theme-4); margin-left: -0.6rem;">prefers-reduced-transparency</code>:<br> solid layers over translucent effects</li>
+                </ol>
+              </div>
+
+              <div class="slide center">
+                <h4 style="font-size: 5rem; margin: 0"><code>prefers-color-scheme</code></h4>
+                <h4 style="font-size: 5rem; margin: 0 0 2rem;"><code>light-dark()</code></h4>
+                <baseline-status style="zoom: 1.5" featureId="light-dark"></baseline-status>
               </div>
 
               <div class="slide center">
@@ -150,7 +179,8 @@
               </div>
 
               <div class="slide center">
-                <img src="img/bramus.jpg" alt="" style="height: 700px">
+                <img src="img/bramus.jpg" alt="" style="height: 600px;
+    margin: 0 0 2rem;">
                 <small>Luckily I work with some smart people who found a way around this <br>(this is @bramus/@bram.us)</small>
               </div>
 
@@ -199,7 +229,7 @@
 
             <div class="slide center">
               <h2>contrast-color()</h2>
-              <p style="max-width: 100%;">Landed in all stable browsers as of yesterday</p>
+              <p style="max-width: 100%;">Recently landed in all stable browsers 🥳</p>
               <baseline-status style="zoom: 1.5" featureId="contrast-color"></baseline-status>
             </div>
 
@@ -213,7 +243,7 @@
             </div>
             </div>  
 
-            <div class="slide center">
+            <div class="slide center" id="popup-slide">
               <div class="two-by">
                 <code class="css" style="font-size: 1.5rem"><pre>
 .card-title {
@@ -231,11 +261,183 @@
 }</pre></code>
               <iframe class="mini-phone" style="height: 600px; background: white;"  src="https://codepen.io/una/debug/ZYpvzgP/cad0ccf229df45a4fef379c5b941ec49" frameborder="0"></iframe>
             </div>
-            </div>  
-
-              <div class="slide center">
-                <img src="img/newsletter-signup.webp" alt="">
-                <p>Image from Paul Boag</p>
+                <div class="intrusive-popup">
+                  <button class="popup-close" aria-label="Close popup">×</button>
+                  <div class="newsletter-form">
+                    <h2 style="color: #ff4444; font-size: 2.5rem; margin: 0 0 1rem 0;">🎉 WELCOME TO THE WEBSITE 🎉</h2>
+                    <p style="color: #333; font-size: 1.8rem; margin: 0 0 1.5rem 0;">Subscribe to our newsletter for exclusive deals you'll probably ignore!</p>
+                    <input type="email" placeholder="Enter your email (we'll sell it)" style="width: 100%; padding: 1rem; font-size: 1.5rem; border: 2px solid #ddd; border-radius: 0.5rem; margin-bottom: 1.5rem; box-sizing: border-box;">
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                      <button class="newsletter-accept" style="flex: 1; min-width: 200px; padding: 1.2rem 2rem; background: #4CAF50; color: white; border: none; border-radius: 0.5rem; font-size: 1.5rem; font-weight: bold; cursor: pointer;">
+                        Yes! I love saving money! 💰
+                      </button>
+                      <button class="newsletter-reject" style="flex: 1; min-width: 200px; padding: 1.2rem 2rem; background: #666; color: white; border: none; border-radius: 0.5rem; font-size: 1.5rem; cursor: pointer;">
+                        No, I prefer paying full price 🤡
+                      </button>
+                    </div>
+                    <p style="color: #999; font-size: 1.2rem; margin-top: 1.5rem; font-style: italic;">*By clicking anything, you agree to receive 47 emails per day</p>
+                  </div>
+                </div>
+                
+                <style>
+                  #popup-slide {
+                    position: relative;
+                    overflow: visible;
+                  }
+                  
+                  .intrusive-popup {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -200%);
+                    background: white;
+                    padding: 2rem;
+                    border-radius: 1rem;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                    z-index: 100;
+                    max-width: 90%;
+                    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+                  }
+                  
+                  #popup-slide.active .intrusive-popup {
+                    transform: translate(-50%, -50%);
+                  }
+                  
+                  .intrusive-popup img {
+                    display: block;
+                    max-width: 600px;
+                    margin: 0 auto;
+                  }
+                  
+                  .intrusive-popup p {
+                    color: #333;
+                    text-align: center;
+                    margin-top: 1rem;
+                  }
+                  
+                  .popup-close {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    width: 40px;
+                    height: 40px;
+                    background: red;
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    font-size: 24px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 101;
+                    transition: all 0.1s ease-out;
+                    line-height: 1;
+                  }
+                  
+                  .popup-close:hover {
+                    background: darkred;
+                    scale: 1.1;
+                  }
+                </style>
+                
+                <script>
+                  (function() {
+                    const slide = document.getElementById('popup-slide');
+                    const closeBtn = slide.querySelector('.popup-close');
+                    const popup = slide.querySelector('.intrusive-popup');
+                    let popupShown = false;
+                    
+                    // Detect when user tries to advance from this slide
+                    document.addEventListener('keydown', function(e) {
+                      // Check if we're on the popup slide and user presses right arrow
+                      if (e.key === 'ArrowRight' || e.key === 'Right') {
+                        const slides = document.querySelectorAll('.slide');
+                        const slideArray = Array.from(slides);
+                        const currentIndex = slideArray.findIndex(s => {
+                          const rect = s.getBoundingClientRect();
+                          return rect.left >= 0 && rect.left < window.innerWidth;
+                        });
+                        
+                        if (slideArray[currentIndex] === slide && !popupShown) {
+                          // Prevent navigation
+                          e.preventDefault();
+                          e.stopPropagation();
+                          
+                          // Show popup
+                          popupShown = true;
+                          setTimeout(() => {
+                            slide.classList.add('active');
+                          }, 100);
+                        }
+                      }
+                    }, true); // Use capture phase to intercept before other handlers
+                    
+                    // Reset when leaving the slide
+                    const observer = new IntersectionObserver((entries) => {
+                      entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                          slide.classList.remove('active');
+                          popupShown = false;
+                        }
+                      });
+                    }, { threshold: 0.5 });
+                    
+                    observer.observe(slide);
+                    
+                    // Cursor repulsion effect
+                    closeBtn.addEventListener('mousemove', function(e) {
+                      const rect = closeBtn.getBoundingClientRect();
+                      const btnCenterX = rect.left + rect.width / 2;
+                      const btnCenterY = rect.top + rect.height / 2;
+                      
+                      const mouseX = e.clientX;
+                      const mouseY = e.clientY;
+                      
+                      // Calculate distance from cursor to button center
+                      const deltaX = btnCenterX - mouseX;
+                      const deltaY = btnCenterY - mouseY;
+                      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                      
+                      // Repulsion strength (inverse of distance)
+                      const repelStrength = 80;
+                      const maxDistance = 100;
+                      
+                      if (distance < maxDistance) {
+                        const force = (maxDistance - distance) / maxDistance;
+                        const moveX = (deltaX / distance) * repelStrength * force;
+                        const moveY = (deltaY / distance) * repelStrength * force;
+                        
+                        closeBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                      }
+                    });
+                    
+                    // Reset position when mouse leaves the popup area
+                    popup.addEventListener('mouseleave', function() {
+                      closeBtn.style.transform = 'translate(0, 0)';
+                    });
+                    
+                    // Close button - advances to next slide when clicked
+                    closeBtn.addEventListener('click', function(e) {
+                      // Find the next slide
+                      const slides = document.querySelectorAll('.slide');
+                      const currentSlide = slide;
+                      let found = false;
+                      
+                      for (let i = 0; i < slides.length; i++) {
+                        if (found) {
+                          // Scroll to next slide
+                          slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                          break;
+                        }
+                        if (slides[i] === currentSlide) {
+                          found = true;
+                        }
+                      }
+                    });
+                  })();
+                </script>
               </div>
               </div>
 
@@ -252,11 +454,6 @@
 
               <div class="slide center">
                 <img style="width: 550px" src="img/header-footer-cover.jpg" alt="header and footer cover">
-              </div>
-
-              <div class="slide center">
-                <video src="img/azhassan.mp4" width="1200" type="video/mp4" controls autoplay loop muted></video>
-                <p>@azhassan_</p>
               </div>
 
               <!-- Demo 1 -->
@@ -339,6 +536,7 @@
                     let clickCount = 0;
                     
                     const content1 = `<p style="margin-top: -2rem;">Scroll State Queries</p>
+                    <small style="margin: -2rem 0 2rem;">stuck, snapped, scrollable, scrolled</small>
                 <baseline-status style="zoom: 1.5" featureId="container-scroll-state-queries"></baseline-status>`;
                     
                     const content2 = `<code class="css" style="font-size: 1.3rem; margin-left: 5rem;"><pre>html {
@@ -581,6 +779,11 @@ header {
               <!-- End types of scroll state queries -->
 
               <div class="slide center">
+                <video src="img/azhassan.mp4" width="1200" type="video/mp4" controls autoplay loop muted></video>
+                <p>@azhassan_</p>
+              </div>
+
+              <div class="slide center">
                 <div class="two-by">
                  <div style="display: grid; gap: 2rem;">
                   <code class="html" style="font-size: 1.3rem"><pre>&lt;a href="#" class="nav-item"&gt;
@@ -645,6 +848,7 @@ header {
             <div class="slide center">
               <p>Just landed in Chrome 146:</p>
               <h2>Scroll-<span style="color:magenta">triggered</span> animation</h2>
+              <baseline-status style="zoom: 1.5" featureId="scroll-triggered-animations"></baseline-status>
             </div>
 
             <div class="slide center">
@@ -828,7 +1032,28 @@ header {
             <div class="slide center">
               <iframe style="width:1300px; height: 720px; zoom: 2" src="https://codepen.io/una/debug/ByzYMVb" frameborder="0"></iframe>
             </div>
-                
+
+            <div class="slide center">
+              <div class="two-by">
+              <code class="css"><pre style="font-size: 1.5rem;">.content {
+  animation: animate-up 0.1s ease-in forwards;
+  transform-origin: bottom;
+  border-shape: var(--arrow-at-bottom);
+  /* … */
+}
+
+@container anchored(fallback: flip-block) {
+  .content {
+    animation-name: animate-down;
+    transform-origin: top;
+    border-shape: var(--arrow-at-top);
+  }
+}</pre></code>
+              <iframe class="mini-phone" src="https://codepen.io/una/debug/pvNYpjE" frameborder="0"></iframe>
+              </div>
+            </div>
+
+
 <div class="slide center">
                 <div class="two-by"><div style="display: grid; gap: 2rem;">
   <code class="html"><pre style="font-size: 1.5rem;"> &lt;!-- Invoker --&gt;
@@ -844,7 +1069,7 @@ header {
 </code></div>
               <iframe class="mini-phone" src="https://codepen.io/una/debug/bNEwzrp" frameborder="0"></iframe>
               </div>
-            </div>
+            </div>            
 
             <div class="slide center">
                 
@@ -951,12 +1176,16 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
     scale: 1.1;" src="https://codepen.io/una/debug/Eaabmoe" frameborder="0"></iframe>
             </div> -->
 
+            <!-- ADD BACK FOR CSS Day -->
+            <!-- <div class="slide center">
+              <img src="img/cssday-2025-457.jpg" alt="">
+            </div>
+
             <div class="slide center">
               <p>[OPEN QUESTIONS]</p>
               <p>WELL WHAT ABOUT MOBILE</p>
-              --image from CSS Day session last year--
               <p><code>::interest-button</code></p>
-            </div>
+            </div> -->
 
             <div class="slide center">
               <p><code>[interestfor]</code> Polyfill</p>
@@ -1003,9 +1232,10 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
                   <h2 class="theme-2-text" style="font-size: 5rem;">4. Provide guided navigation</h2>
                   
                   <div>
-                    <p>Morphing animations between states</p>
-                    <p>View-transitions between pages</p>
+                    <p>Morphing animations between states (& stateful feedback)</p>
+                    <p>Transitions between page views</p>
                     <p>Intentional animations to guide user attention</p>
+                    <p>Interactions that respond to user action</p>
                   </div>
               </div>
 
@@ -1016,7 +1246,7 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
 
               <div class="slide center">
                 <video src="img/AntonSKV.mp4" controls loop autoplay muted></video>
-                <p>dribbble.com/AntonSKV</p>
+                <p style="margin-top: 0">dribbble.com/AntonSKV</p>
               </div>
 
               <div class="slide center">
@@ -1027,24 +1257,57 @@ I'm a CSS and UI enthusiast...&lt;/p&gt;
                   <li>Use natural easings <small>(you can approx. physics with <code>linear()</code>)</small></li>
                   <li>Interaction triggers user attention</li>
                   <li>Animate between states for better perceived performance</li>
+                  <li>Think about natural motion</li>
                 </ul>
               </div>
+
+              <div class="slide center">
+                <div class="two-by" style="grid-template-columns: 1fr 1fr;">
+                  <div>
+                    <iframe class="mini-phone" style="aspect-ratio: 2 / 2.5;" src="https://codepen.io/una/debug/bNBvoGW/52cef8b0842a7de104cc12dfec2cc5d0" frameborder="0"></iframe>
+                    <code>
+                      <pre class="css">button:active {
+  scale: 0.95;
+}</pre>
+                    </code>
+                  </div>
+                  <div>
+                    <iframe class="mini-phone" style="aspect-ratio: 2 / 2.19;" src="https://codepen.io/una/debug/bNBvyYo/b494eb517dbecd4f132a91ac18f3bd28" frameborder="0"></iframe>
+                    <code>
+                      <pre class="css">@keyframes lil-blur-and-move {
+  0% { ...; filter: blur(0px); }
+  50% { ...; filter: blur(8px); }
+  100% { ...; filter: blur(0px); }
+}</pre>
+                    </code>
+                  </div>
+                </div>
+              </div>
+<!-- 
+              <div class="slide center">
+                Easings and coordinating animation w/staggered effects
+              </div> -->
+
+              <div class="slide center">
+              <iframe style="width:1300px; height: 700px" src="https://spring-generator.vercel.app/" frameborder="0"></iframe>
+            </div>
 
               <div class="slide center">
                 <video height=600 src="img/studiyo.mp4" controls loop autoplay muted></video>
                 <p>@Studiyoco</p>
               </div>
 
-              <div class="slide center">
+              <!-- <div class="slide center">
                 <video height=600 src="img/ShapesLab.mp4" controls loop autoplay muted></video>
                 <p>Shapes Lab (@shapesLabHQ)</p>
-              </div>
+              </div> -->
 
 
               <div class="slide center">
                 
               <div class="two-by">
                 <div><p>sibling-index()</p>
+                <baseline-status style="margin-bottom: 1rem; zoom: 1.2" featureId="scroll-target-group"></baseline-status>
 <code style="font-size: 1.5rem"><pre>dialog[open] > * {
   animation: entry-animation 0.6s 
              var(--subtle-spring) forwards;
@@ -1087,24 +1350,28 @@ li {
         <div class="slide center">
           <h3 style="font-size: 3rem">Direction-aware scroll-triggered animations</h3>
               <div class="two-by">
-<code style="font-size: 1.35rem"><pre>html {
-  container-type: scroll-state;
+<code style="font-size: 1.35rem"><pre>html { container-type: scroll-state; }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(var(--amt)); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .card {
-  animation: slide-up 0.6s ease-out forwards;
+  animation: slide-in 0.6s ease-out forwards;
+  --amt: 50px;
 
-  timeline-trigger: --reveal view() entry 0% exit 100%;
   trigger-scope: --reveal;
-  animation-trigger: --reveal play-forwards play-backwards;
+  timeline-trigger: --reveal view() entry 0% exit 100%;
+  animation-trigger: --reveal play-forwards;
 }
 
 @container scroll-state(scrolled: top) {
   .card {
-    animation-name: slide-down;
+    --amt: -50px;
   }
 }</pre></code>
-            <iframe class="mini-phone" style="height: 500px" src="https://codepen.io/una/debug/KwzEzLG" frameborder="0" ></iframe>
+            <iframe class="mini-phone" style="height: 600px" src="https://codepen.io/una/debug/EaNoWWG" frameborder="0" ></iframe>
           </div>
         </div>
 
@@ -1221,10 +1488,59 @@ a:target-current {
               <h2>Morphing animations</h2>
             </div>
 
-            <div class="slide center">
-              <div class="two-by" style="grid-template-columns: 1fr 1fr;">
-            <p>Scoped view transitions are now in Chrome 147+</p>
-            <iframe class="mini-phone" src="https://codepen.io/una/debug/xbEdrVz/5e029a4aaaaa075056ce41e9020c0b7b/" frameborder="0"></iframe></div>
+            <div class="slide center" id="scoped-vt-slide">
+              <div class="two-by" style="grid-template-columns: 1.2fr 1fr;padding-left: 4rem;">
+            <div id="scoped-vt-wrapper" style="position: relative;">
+              <p id="scoped-vt-trigger" style="cursor: pointer; user-select: none;">Scoped view transitions are now in Chrome 147+</p>
+              
+              <div id="scoped-vt-code" class="code-popup">
+                <code class="js"><pre>$el.startViewTransition()</pre></code>
+              </div>
+            </div>
+            
+            <iframe class="mini-phone" src="https://codepen.io/una/debug/xbEdrVz/5e029a4aaaaa075056ce41e9020c0b7b/" frameborder="0"></iframe>
+          </div>
+          
+          <style>
+            .code-popup {
+              margin-top: 1rem;
+              transform: translateY(20px);
+              background: #3c3a45;
+              padding: 2rem 3rem;
+              border-radius: 2rem;
+              border: 1px solid lightgray;
+              box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+              opacity: 0;
+              pointer-events: none;
+              transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                          opacity 0.5s ease;
+              white-space: nowrap;
+            }
+            
+            .code-popup.visible {
+              transform: translateY(0);
+              opacity: 1;
+              pointer-events: auto;
+            }
+            
+            .code-popup code {
+              font-size: 2rem;
+              color: white;
+            }
+          </style>
+          
+          <script>
+            (function() {
+              const trigger = document.getElementById('scoped-vt-trigger');
+              const codeBlock = document.getElementById('scoped-vt-code');
+              let isVisible = false;
+              
+              trigger.addEventListener('click', function() {
+                isVisible = !isVisible;
+                codeBlock.classList.toggle('visible', isVisible);
+              });
+            })();
+          </script>
           </div>
 
             <div class="slide center">
@@ -1322,6 +1638,29 @@ a:target-current {
             </div>
           </div>
 
+          <div class="slide center">
+            <div class="two-by">
+              <div class="code-side">
+                <code class="css" style="font-size: 1.5rem"><pre>/* you basically get this */
+/* for free with view transitions */
+                  
+/* customize transition (optional) */
+@keyframes fade-and-scale {
+  to { 
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+::view-transition-old(*):only-child {
+  animation: fade-and-scale .2s ease-in forwards;
+}</pre></code>
+              </div>
+
+              <iframe class="mini-phone" src="https://codepen.io/una/debug/VYjKoae" frameborder="0" ></iframe>
+            </div>
+          </div>
+
             <div class="slide center">
                 <div class="two-by">
                   <div class="code-side">
@@ -1347,27 +1686,82 @@ a:target-current {
             </div>
           </div>
 
-          <div class="slide center">
-            <iframe style="width:1300px; height: 700px" src="https://spring-generator.vercel.app/" frameborder="0"></iframe>
-          </div>
+          
 
               </div>
               <!-- Section 3 -->
               <div class="section-group group-theme-4">
               <div class="sticky-anchor"><div class="theme-badge">Adaptive design</div></div>
-              <div class="slide center stop">
-                Intro
+              <div class="slide center bg-theme-2 stop">
+                  <h2 class="theme-4-text" style="font-size: 5rem;">5. Adapt to the form factor</h2>
+                  
+                  <div>
+                    <p>Leverage touch-based intuitive interactions</p>
+                    <p>Consider minimum touch target sizes</p>
+                    <p>Adapt the layout and UI pattern</p>
+                  </div>
               </div>
+              
+
+              <div class="slide center">
+                <iframe src="https://codepen.io/una/debug/YPWZzLd" style="width: 1000px;
+    height: 650px;" frameborder="0"></iframe>
               </div>
 
+              <div class="slide center">
+                <div class="two-by">
+                  <div class="code-side">
+                    <code class="css" style="font-size: 1.5rem"><pre>/* scroll-snap */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  
+  /* visually hide scrollbar */
+  scrollbar-width: none; 
+}</pre></code>
+<code class="js" style="font-size: 1.5rem"><pre>// Setup: Scroll to content & inert menu
+content.scrollIntoView({ 
+  behavior: "instant" 
+});
+menu.setAttribute('inert', '');</pre></code>
+        </div>
+
+              <iframe class="mini-phone" src="https://codepen.io/una/debug/azZJbWL" frameborder="0" ></iframe>
+            </div>
+          </div>
+
+              <div class="slide center">
+                <div class="two-by">
+                  <div class="code-side">
+                    <p>Future: Overscroll Areas</p>
+                    <code class="html" style="font-size: 1.5rem"><pre>&lt;div id="container" overscrollcontainer>
+  &lt;ul id="menu"&gt;
+    &lt;li&gt;&lt;a href="/home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  Some content.
+&lt;/div&gt;
+
+&lt;button
+  commandfor="menu" 
+  command="toggle-overscroll" 
+  id=btn&gt;
+    Toggle Menu
+&lt;/button&gt;</pre></code>
+        </div>
+
+              <iframe class="mini-phone" src="https://flackr.github.io/web-demos/html/overscrollcontainer/menu/" frameborder="0" ></iframe>
+            </div>
+          </div>
+          </div>
               
               <div class="slide center">
-                <h3 style="font-size: 6rem; max-width: 100%;">Key UX Principles</h3>
-                <p>TODO: FIX</p>
+                <h2 style="font-size: 6rem; max-width: 100%; margin: 0">Key UX Principles</h2>
                 <ol id="ux-principles-list">
-                  <li class="theme-1-text"><strong>Reduce Noise</strong></li>
-                  <li class="theme-2-text"><strong>Guide users</strong></li>
-                  <li class="theme-3-text"><strong>Personalize</strong></li>
+                  <li class="theme-0-text"><strong>Respect user preferences</strong></li>
+                  <li class="theme-1-text"><strong>Maximize content, reduce noise</strong></li>
+                  <li class="theme-3-text"><strong>Implement natural interactions</strong></li>
+                  <li class="theme-2-text"><strong>Provide guided navigation</strong></li>
+                  <li class="theme-4-text"><strong>Adapt to the form factor</strong></li>
                 </ol>
               </div>
 

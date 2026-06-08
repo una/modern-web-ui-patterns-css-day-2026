@@ -14,3 +14,7 @@
 .codepen-link-checkbox:has(:checked) + img {
   display: block;
 }
+
+iframe {
+  overscroll-behavior: none; 
+}
