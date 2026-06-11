@@ -49,7 +49,7 @@
               </div>
 
               <div class="slide center">
-                <ul style="font-size: 2rem">
+                <ul style="font-size: 2.5rem">
                   <li>@alxui_ux</li>
                   <li>@azhassan_</li>
                   <li>@opawica</li>
@@ -146,7 +146,8 @@
                 <style contenteditable style="display: block;
     white-space: pre;
     text-align: left;
-    font-size: 2.5rem;
+    font-size: 1.7rem;
+      font-family: 'FontWithASyntaxHighlighter';
     padding: 2rem;
     border: 1px solid lightgray;
     background: #3c3a45;
@@ -163,25 +164,9 @@
               </div>
 
               <div class="slide center">
-                <style contenteditable style="display: block;
-    white-space: pre;
-    text-align: left;
-    font-size: 2.5rem;
-    padding: 2rem;
-    border: 1px solid lightgray;
-    background: #3c3a45;
-    border-radius: 4rem;
-    corner-shape: squircle; width: 900px;">/* not a thing */
-
-.title {
-  font-weight: light-dark(700, 400);
-}</style>
-              </div>
-
-              <div class="slide center">
                 <img src="img/bramus.jpg" alt="" style="height: 600px;
     margin: 0 0 2rem;">
-                <small>Luckily I work with some smart people who found a way around this <br>(this is @bramus/@bram.us)</small>
+                <small>Luckily I work with some smart people who found a way around <br/>this without <code>color-scheme()</code></small>
               </div>
 
                 <div class="slide center">
@@ -243,14 +228,18 @@
             </div>
             </div>  
 
-            <div class="slide center" id="popup-slide">
+            <div class="slide center">
               <div class="two-by">
-                <code class="css" style="font-size: 1.5rem"><pre>
-.card-title {
-  color: if(
-    style(--contrast-color: white): antiquewhite;
-    else: midnightblue
-  );
+                <code class="css" style="font-size: 1.5rem"><pre>@property --contrast-color {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: true;
+}
+
+.card {
+  .sq-card {
+  --bg: var(--sq-demo-color);
+  --contrast-color: contrast-color(var(--bg));
 }
 
 .card-label {
@@ -261,6 +250,21 @@
 }</pre></code>
               <iframe class="mini-phone" style="height: 600px; background: white;"  src="https://codepen.io/una/debug/ZYpvzgP/cad0ccf229df45a4fef379c5b941ec49" frameborder="0"></iframe>
             </div>
+          </div>
+
+          <div class="slide center" id="popup-slide">
+                <code class="css" style="font-size: 1.5rem"><pre>box-shadow:
+  /* Subtle shadow--visible in light, transparent in dark */
+  0 1px 2px light-dark(lightgray, transparent),
+  0 4px 12px light-dark(lightgray, transparent),
+  0 12px 32px light-dark(lightgray, transparent),
+
+  /* Glowy border--transparent in light, visible in dark */
+  inset 0 0 0 1px light-dark(transparent, oklch(from var(--bg) calc(l + 0.5) c h / 0.5)),
+  0 0 16px light-dark(transparent, oklch(from var(--bg) calc(l + 0.5) c h / 0.3)),
+  0 0 3px light-dark(transparent, oklch(from var(--bg) calc(l + 0.5) c h / 0.5));</pre></code>
+              <iframe class="mini-phone" style="height: 250px; width: 1100px;margin-top: 2rem;"  src="https://codepen.io/una/debug/MYJeKdb/57085df8734145c091dd279bd32b3d89" frameborder="0"></iframe>
+          
                 <div class="intrusive-popup">
                   <button class="popup-close" aria-label="Close popup">×</button>
                   <div class="newsletter-form">
@@ -444,7 +448,7 @@
               <div stop class="section-group group-theme-1">
               <div class="sticky-anchor"><div class="theme-badge">Reduce Noise</div></div>
               <div class="slide center bg-theme-1 stop">
-                  <h2 class="theme-1-text">1. Reduce noise</h2>
+                  <h2 class="theme-1-text">2. Reduce noise</h2>
                   <div>
                     <p style="max-width: 100%;">Avoid pop-ups/banners that obscure the screen.</p>
                     <p style="max-width: 100%;">Eliminate visual clutter and application borders.</p>
@@ -537,7 +541,8 @@
                     
                     const content1 = `<p style="margin-top: -2rem;">Scroll State Queries</p>
                     <small style="margin: -2rem 0 2rem;">stuck, snapped, scrollable, scrolled</small>
-                <baseline-status style="zoom: 1.5" featureId="container-scroll-state-queries"></baseline-status>`;
+                <baseline-status style="zoom: 1.5" featureId="container-scroll-state-queries"></baseline-status>
+                <small style="margin-top: 2rem;">Please, browser vendors, ship these next 🙏</small>`;
                     
                     const content2 = `<code class="css" style="font-size: 1.3rem; margin-left: 5rem;"><pre>html {
   container-type: scroll-state;
@@ -779,7 +784,7 @@ header {
               <!-- End types of scroll state queries -->
 
               <div class="slide center">
-                <video src="img/azhassan.mp4" width="1200" type="video/mp4" controls autoplay loop muted></video>
+                <video src="img/azhassan.mp4" width="1200" style="margin-top: 5rem;"type="video/mp4" controls autoplay loop muted></video>
                 <p>@azhassan_</p>
               </div>
 
@@ -811,6 +816,7 @@ header {
             <div class="slide center">
               <h2>Scroll-driven animation</h2>
               <baseline-status style="zoom: 1.5" featureId="scroll-driven-animations"></baseline-status>
+              <p>#Interop2026</p>
             </div>
 
             <div class="slide center">
@@ -848,7 +854,7 @@ header {
             <div class="slide center">
               <p>Just landed in Chrome 146:</p>
               <h2>Scroll-<span style="color:magenta">triggered</span> animation</h2>
-              <baseline-status style="zoom: 1.5" featureId="scroll-triggered-animations"></baseline-status>
+              <!-- <baseline-status style="zoom: 1.5" featureId="scroll-triggered-animations"></baseline-status> -->
             </div>
 
             <div class="slide center">
@@ -976,7 +982,9 @@ header {
 
               <div class="slide center">
                 
-                <div class="two-by"><div style="display: grid; gap: 2rem;">
+                <div class="two-by"><div><baseline-status style="zoom: 1.1;
+    margin-bottom: 1.5rem;" featureId="popover"></baseline-status>
+                  <div style="display: grid; gap: 2rem;">
   <code class="html" style="font-size: 1.5rem"><pre>&lt;button popovertarget="my-tooltip"&gt;
   &lt;p aria-hidden="true"&gt;?&lt;/p&gt;
   &lt;p class="sr-only"&gt;Open Tooltip&lt;/p&gt;
@@ -992,7 +1000,7 @@ header {
   position-try: flip-block;
 }
 </pre>
-</code></div>
+</code></div></div>
               <iframe class="mini-phone resize" src="https://codepen.io/una/debug/YPXewpJ" frameborder="0"></iframe>
               </div>
             </div>
@@ -1000,27 +1008,31 @@ header {
             <div class="slide center">
                 
                 <div class="two-by"><div style="display: grid; gap: 2rem;">
-  <code class="css"><pre style="font-size: 1.5rem;">.tooltip {
+  <code class="css"><pre style="font-size: 1.5rem;">button {
+  anchor-name: --invoker;
+}
+
+.tooltip {
   container-type: anchored;
   
   /*  arrow  */
   &::before {
     content: '';
-    top: 100%;
-    left: 50%;
     border: solid transparent;
     border-top-color: var(--tooltip-bg);
+    position-anchor: --invoker;
+    position-area: top;
     ...
     
     @container anchored(fallback: flip-block) {
-      bottom: 100%;
-      top: calc(-2 * var(--spacer));
+      position-area: bottom;
       border-top-color: transparent;
       border-bottom-color: var(--tooltip-bg);
     }
-  }</pre>
+  }
+}</pre>
 </code></div>
-              <iframe class="mini-phone" src="https://codepen.io/una/debug/bNEwzrp" frameborder="0"></iframe>
+              <iframe class="mini-phone" src="https://codepen.io/una/debug/MYJevag" frameborder="0"></iframe>
               </div>
             </div>
 
@@ -1154,11 +1166,14 @@ header {
     interestfor="tooltip--notifications"&gt;
     notifications
   &lt;/button&gt;
-  &lt;button 
-    popovertarget="speaker" 
-    interestfor="tooltip--speaker"&gt;
-    mic
-  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Notifications --&gt;
+&lt;div id="notifications" popover&gt;...&lt;/div&gt;
+
+&lt;!-- Tooltip --&gt;
+&lt;div id="tooltip--notifications" popover="hint"&gt;
+  Notifications
 &lt;/div&gt;
 </pre>
 </code>
@@ -1167,60 +1182,58 @@ header {
               </div>
             </div>
 
-            <!-- <div class="slide center">
-              <iframe style="width: 1000px;
-    height: 450px;
-    background: none;
-    border-radius: 1rem;
-    scale: 1.1;" src="https://codepen.io/una/debug/Eaabmoe" frameborder="0"></iframe>
-            </div> -->
 
-            <!-- ADD BACK FOR CSS Day -->
-            <!-- <div class="slide center">
+            <div class="slide center">
               <img src="img/cssday-2025-457.jpg" alt="">
             </div>
 
-            <div class="slide center">
-              <p>[OPEN QUESTIONS]</p>
-              <p>WELL WHAT ABOUT MOBILE</p>
+            <div class="slide">
               <p><code>::interest-button</code></p>
-            </div> -->
+              <div class="two-by">
+                <img src="img/inline-a.png" alt="">
+                <img src="img/inline-b.png" alt="">
+              </div>
+            </div>
 
             <div class="slide center">
-              <p><code>[interestfor]</code> Polyfill</p>
-              <div>
-                <code style="display: block; margin-bottom: 2rem;" class="js"><pre>import interestfor from "https://esm.sh/interestfor";</pre></code>
-                <code style="display: block" class="css"><pre>
-[interestfor] {
-  /*  for polyfill this must be a custom property */
-  --interest-delay-start: 0.1s;
-  --interest-delay-end: 0.1s;
-  interest-delay-start: var(--interest-delay-start);
-  interest-delay-end: var(--interest-delay-end);
-}</pre></code>
+              <p><code>::interest-button</code></p>
+              <div class="two-by" style="grid-template-columns: 1fr 1fr;">
+                <img src="img/button-1.png" alt="">
+                <img src="img/button-2.png" alt="">
               </div>
             </div>
-          
 
-          <div class="slide center">
-              <div class="two-by">
-                <div>
-<p>Animate from the source</p>
-<!-- <code class="css"><pre style="font-size: 90%;">[interestfor] {
-  interest-delay-start: 0.3s;
-}
-  
-.parent:has(:interest-source) [interestfor] {
-  interest-delay-start: 0s;
-}
+            <div class="slide center">
+              <video style="width:1100px" src="img/interest-invoker-docs.mp4" controls loop autoplay muted></video>
+            </div>
+            
+            <div class="slide center">
+              <code>
+                <pre>::interest-button {
+  content: "ⓘ" / "";
+  display: if(media(hover: hover): none;else: inline-block);
+  color: inherit;
+  background-color: transparent;
+  box-sizing: border-box;
+  min-inline-size: 24px;
+  min-block-size: max(24px, 1lh);
+  margin-inline-start: 0.25em;
+  align-content: center;
+  text-align: center;
+  user-select: none;
+  cursor: help;
+  margin-block: min(-24px, -1lh);
+}</pre>
+              </code>
+            </div>
 
-</pre>
-</code> -->
-</div>
-              <iframe class="mini-phone" src="https://codepen.io/una/debug/WboZmbr" frameborder="0" ></iframe>
+            <div class="slide center">
+              <div class="two-by" style="grid-template-columns: 1fr 1fr;">
+                <img style="width: 450px;" src="img/bsky-before.png" alt="">
+                <img style="width: 450px;" src="img/bsky-after.png" alt="">
               </div>
             </div>
-          </div>
+            </div>
 
             
               <!-- Section 2 -->
@@ -1259,6 +1272,44 @@ header {
                   <li>Think about natural motion</li>
                 </ul>
               </div>
+
+              <div class="slide center">
+              <div class="two-by">
+                <div>
+<p>Animate from the source</p>
+<code class="css"><pre style="font-size: 1.2rem">.tooltip {
+  transition: 
+    opacity 0.1s ease, transform 0.4s var(--spring),
+    width 0.4s ease, display 0.4s allow-discrete,
+    overlay 0.4s allow-discrete;
+
+  &:popover-open {
+    /* open state */
+
+    @starting-style {
+      /* initial styles */
+    }
+  }
+}
+
+.invoker {
+  /* styles */
+
+  &::before {
+    /* ... background bubble ... */
+    transition: transform 0.6s var(--spring);
+  }
+
+  &:interest-source::before {
+    transform: translateY(-80%) scale(0.65);
+  }
+}</pre>
+</code>
+</div>
+              <iframe class="mini-phone" src="https://codepen.io/una/debug/WboZmbr" frameborder="0" ></iframe>
+              </div>
+            </div>
+          
 
               <div class="slide center">
                 <div class="two-by" style="grid-template-columns: 1fr 1fr;">
@@ -1417,7 +1468,7 @@ a:target-current {
               <h2>Anchor positioning</h2>
               <baseline-status style="zoom: 1.5" featureId="anchor-positioning"></baseline-status>
 
-              <p>(technically it's in every browser, there are just various compat bugs so its Baseline status is being debated right now)</p>
+              <p>(though technically it's in every browser)</p>
             </div>
 
             <div class="slide center">
@@ -1637,30 +1688,9 @@ a:target-current {
             </div>
           </div>
 
-          <div class="slide center">
-            <div class="two-by">
-              <div class="code-side">
-                <code class="css" style="font-size: 1.5rem"><pre>/* you basically get this */
-/* for free with view transitions */
-                  
-/* customize transition (optional) */
-@keyframes fade-and-scale {
-  to { 
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
+          
 
-::view-transition-old(*):only-child {
-  animation: fade-and-scale .2s ease-in forwards;
-}</pre></code>
-              </div>
-
-              <iframe class="mini-phone" src="https://codepen.io/una/debug/VYjKoae" frameborder="0" ></iframe>
-            </div>
-          </div>
-
-            <div class="slide center">
+            <!-- <div class="slide center">
                 <div class="two-by">
                   <div class="code-side">
                     <code class="css" style="font-size: 1.5rem"><pre>:root {
@@ -1683,7 +1713,7 @@ a:target-current {
 
               <iframe class="mini-phone" src="https://codepen.io/una/debug/jErVgyZ" frameborder="0" ></iframe>
             </div>
-          </div>
+          </div> -->
 
           
 
@@ -1710,7 +1740,8 @@ a:target-current {
               <div class="slide center">
                 <div class="two-by">
                   <div class="code-side">
-                    <code class="css" style="font-size: 1.5rem"><pre>/* scroll-snap */
+                    <code class="css" style="font-size: 1.5rem"><pre>.page {
+  display: flex;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   
@@ -1765,20 +1796,24 @@ menu.setAttribute('inert', '');</pre></code>
               </div>
 
               <div class="slide center">
-                <h1>Do I need to know <strong>all</strong> the things?</h1>
+                <h1><span style="color:magenta">User experience</span> is more important than ever.</h1>
               </div>
 
               <div class="slide center">
-                <h1>Know what's out there. <span style="color:magenta">Know what to ask for.</span> Reach for native first.</h1>
+                <h1>The web is more <span style="color:magenta">capable</span> than ever.</h1>
               </div>
 
-            <div class="slide center">
-              <h1>Raise your expectations</strong> for the web.</h1>
-            </div>
+              <div class="slide center">
+                <h1><span style="color:magenta">Raise your expectations</span> for the web.</h1>
+              </div>
 
-            <div class="slide center">
-              <h1>The web just keeps getting better.</h1>
-            </div>
+              <div class="slide center">
+                <h1>Think about the <span style="color:magenta">little big things</span> that bring it all to life.</h1>
+              </div>
+
+              <!-- <div class="slide center">
+                <h1>Know what's out there. <span style="color:magenta">Know what to ask for.</span> Reach for native first.</h1>
+              </div> -->
 
             <div class="slide center">
               <h1>Thank you!</h1>
@@ -1802,9 +1837,9 @@ menu.setAttribute('inert', '');</pre></code>
                 <div class="side">
                     <p style="border-bottom: 5px solid var(--lavender); text-align: left; width: 100%; margin-left: -4rem; ">Personal</p>
                     <ul class="links end-links" style="font-size: 2.5rem;">
-                    <li>Twitter: <span>@una</span></li>
-                    <li>Blusesky: <span>una.im</span></li>
-                    <li>Website: <span>una.im</span> (RSS)</li>
+                      <li>Blusesky: <span>una.im</span></li>
+                      <li>Twitter: <span>@una</span></li>
+                      <li>Website: <span>una.im</span> (RSS)</li>
                   </ul>
                 </div>
                 <div class="side">
